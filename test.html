@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Интерактивный тест</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="container">
+
+<h1>Интерактивный тест по видам тестирования</h1>
+
+<form id="quiz">
+    <div class="question">
+        <h3>1. Какой вид тестирования проверяет отдельные функции и методы?</h3>
+        <label><input type="radio" name="q1" value="0"> Функциональное</label><br>
+        <label><input type="radio" name="q1" value="1"> Модульное</label><br>
+        <label><input type="radio" name="q1" value="0"> Сквозное</label>
+    </div>
+
+    <div class="question">
+        <h3>2. Какой тест проверяет работу системы при нагрузке?</h3>
+        <label><input type="radio" name="q2" value="1"> Тестирование производительности</label><br>
+        <label><input type="radio" name="q2" value="0"> Smoke-тестирование</label><br>
+        <label><input type="radio" name="q2" value="0"> Модульное тестирование</label>
+    </div>
+
+    <div class="question">
+        <h3>3. Какие тесты относятся к низкому уровню?</h3>
+        <label><input type="checkbox" value="1"> Модульные</label><br>
+        <label><input type="checkbox" value="1"> Интеграционные</label><br>
+        <label><input type="checkbox" value="0"> Сквозные</label>
+    </div>
+
+    <div class="question">
+        <h3>4. Какие характеристики проверяются в тестировании производительности?</h3>
+        <label><input type="checkbox" value="1"> Скорость</label><br>
+        <label><input type="checkbox" value="1"> Масштабируемость</label><br>
+        <label><input type="checkbox" value="0"> Дизайн интерфейса</label>
+    </div>
+
+    <div class="question">
+        <h3>5. Какие тесты выполняются сразу после сборки?</h3>
+        <label><input type="radio" name="q5" value="1"> Smoke-тесты</label><br>
+        <label><input type="radio" name="q5" value="0"> Приемочные</label><br>
+        <label><input type="radio" name="q5" value="0"> Сквозные</label>
+    </div>
+
+    <div class="question">
+        <h3>6. Установите соответствие</h3>
+        Модульное тестирование →
+        <select>
+            <option value="0">Проверка поведения пользователя</option>
+            <option value="1">Проверка отдельных функций</option>
+            <option value="2">Проверка логики кода</option>
+        </select>
+        <br><br>
+        Сквозное тестирование →
+        <select>
+            <option value="1">Проверка пользовательских сценариев</option>
+            <option value="0">Проверка методов классов</option>
+            <option value="2">Проверка взаимодействия компонентов системы</option>
+        </select>
+    </div>
+
+    <div class="question">
+        <h3>7. Какой тест ориентирован на бизнес-требования?</h3>
+        <label><input type="radio" name="q7" value="1"> Функциональный</label><br>
+        <label><input type="radio" name="q7" value="0"> Модульный</label><br>
+        <label><input type="radio" name="q7" value="0"> Smoke</label>
+    </div>
+
+    <div class="question">
+        <h3>8. Какие тесты требуют запуска приложения?</h3>
+        <label><input type="checkbox" value="1"> Приемочные</label><br>
+        <label><input type="checkbox" value="1"> Сквозные</label><br>
+        <label><input type="checkbox" value="0"> Модульные</label>
+    </div>
+
+    <div class="question">
+        <h3>9. Какой тест проверяет взаимодействие модулей?</h3>
+        <label><input type="radio" name="q9" value="1"> Интеграционный</label><br>
+        <label><input type="radio" name="q9" value="0"> Smoke</label><br>
+        <label><input type="radio" name="q9" value="0"> Модульный</label>
+    </div>
+
+    <div class="question">
+        <h3>10. Какой вид тестирования самый дорогой в автоматизации?</h3>
+        <label><input type="radio" name="q10" value="1"> Сквозной</label><br>
+        <label><input type="radio" name="q10" value="0"> Модульный</label><br>
+        <label><input type="radio" name="q10" value="0"> Smoke</label>
+    </div>
+
+    <button type="button" onclick="checkTest()">Завершить тест</button>
+
+</form>
+
+<div id="result" class="result"></div>
+
+</div>
+
+<script>
+function checkTest() {
+    let score = 0;
+
+    document.querySelectorAll('input[type="radio"]:checked').forEach(el => {
+        score += parseInt(el.value);
+    });
+
+    document.querySelectorAll('.question input[type="checkbox"]').forEach(el => {
+        if (el.checked) score += parseInt(el.value);
+    });
+
+    document.querySelectorAll('select').forEach(el => {
+        score += parseInt(el.value);
+    });
+
+    document.getElementById('result').innerText =
+        "Ваш результат: " + score + " из 10";
+}
+</script>
+
+</body>
+</html>
